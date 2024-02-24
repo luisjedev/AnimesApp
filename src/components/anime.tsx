@@ -1,3 +1,3 @@
 export function Anime() {
-  return;
+  return <h1>Soy un anime</h1>;
 }
