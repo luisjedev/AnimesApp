@@ -1,4 +1,47 @@
+html {
+    background-color: #131928;
+    color: white;
+}
+
 * {
     padding: 0;
     margin: 0;
+}
+
+/* Main layout */
+
+.app-container {
+    width: 100%;
+    height: auto;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Home */
+
+.home-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.home-header-container {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    gap: 10px;
+    padding: 10px;
+    background-color: #282d43cc;
+    border-radius: 10px;
+}
+
+.home-navbar {
+}
+
+.home-navbar-list {
+}
+
+.home-navbar-item {
+}
+
+.home-anime-list-container {
 }

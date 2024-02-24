@@ -1,3 +1,3 @@
 export function AnimeFilter() {
-  return;
+  return <h1>Búsqueda</h1>;
 }
