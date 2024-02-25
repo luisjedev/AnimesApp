@@ -1,3 +1,16 @@
+import SearchIcon from "../assets/lupa.png";
+
 export function AnimeFilter() {
-  return <h1>Búsqueda</h1>;
+  return (
+    <div className="anime-filter-container">
+      <div className="input-container">
+        <input
+          className="anime-filter-input"
+          type="text"
+          placeholder="one piece..."
+        ></input>
+      </div>
+      <img src={SearchIcon} alt="Search icon" className="search-img" />
+    </div>
+  );
 }

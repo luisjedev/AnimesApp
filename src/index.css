@@ -27,20 +27,56 @@ html {
 .home-header-container {
     display: flex;
     align-items: center;
-    justify-content: right;
-    gap: 10px;
-    padding: 10px;
+    justify-content: space-between;
+    gap: 30px;
     background-color: #282d43cc;
     border-radius: 10px;
+    padding: 10px 40px;
 }
 
-.home-navbar {
+.logo {
+    height: 40px;
 }
 
-.home-navbar-list {
+.filters-container {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    gap: 15px;
 }
 
-.home-navbar-item {
+.favorite-img {
+    width: 25px;
+}
+
+.search-img {
+    width: 30px;
+    position: absolute;
+    top: 50%;
+    left: 10px; /* Ajusta el valor según sea necesario para alinear la imagen */
+    transform: translateY(-50%);
+    height: auto;
+}
+
+.anime-filter-container {
+    position: relative;
+    padding: 5px;
+}
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+.anime-filter-input {
+    width: 200px;
+    color: white;
+    border: none;
+    height: 30px;
+    font-size: 16px;
+    padding: 5px 10px;
+    border-radius: 10px;
+    background-color: #131928;
+    padding-left: 40px;
 }
 
 .home-anime-list-container {
