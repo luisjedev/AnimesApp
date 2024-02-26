@@ -1,10 +1,9 @@
-import { Header } from "../components/header";
+import { AnimeList } from "../components/anime-list";
 
 export function Home() {
   return (
-    <main className="home-container">
-      <Header />
-      <section className="home-anime-list-container"></section>
+    <main className="anime-list-container">
+      <AnimeList />
     </main>
   );
 }

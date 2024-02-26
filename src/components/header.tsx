@@ -8,7 +8,7 @@ export function Header() {
   const [showFavorites, setShowFavorites] = useState(false);
 
   return (
-    <header className="home-header-container">
+    <header className="header-container">
       <img src={Logo} alt="bohanon logo" className="logo" />
       <div className="filters-container">
         <AnimeFilter />
