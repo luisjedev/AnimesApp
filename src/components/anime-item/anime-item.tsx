@@ -3,6 +3,7 @@ import FavImg from "../../assets/fav-icon.png";
 import FillFavImg from "../../assets/fill-fav-icon.png";
 import { useState } from "react";
 import { Anime } from "../../interfaces/anime";
+import { useAnimesContext } from "../../contexts/useAnimesContext";
 
 type AnimeItemProps = {
   anime: Anime;
@@ -10,6 +11,18 @@ type AnimeItemProps = {
 
 export function AnimeItem({ anime }: AnimeItemProps) {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const { changeFavorites } = useAnimesContext();
+
+  function onChangeIsFavorite() {
+    setIsFavorite((prev) => !prev);
+    changeFavorites(anime);
+  }
+
+  if (!anime) {
+    return <h3>Error al cargar anime</h3>;
+  }
+
   return (
     <article className="anime-card-container">
       <div className="anime-art-container">
@@ -18,13 +31,15 @@ export function AnimeItem({ anime }: AnimeItemProps) {
       <footer className="anime-card-footer">
         <div className="anime-card-details">
           <h2 className="anime-title">{anime.title}</h2>
-          <p className="anime-categories">{anime.genres[0].name}</p>
+          <p className="anime-categories">
+            {anime.genres[0]?.name}, {anime.genres[1]?.name}
+          </p>
         </div>
         <img
           className="favorite-img"
           src={isFavorite ? FillFavImg : FavImg}
           alt="favorites icon"
-          onClick={() => setIsFavorite((prev) => !prev)}
+          onClick={() => onChangeIsFavorite()}
         />
       </footer>
     </article>
