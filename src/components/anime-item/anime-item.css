@@ -14,6 +14,12 @@
     height: 290px;
     object-fit: cover;
     cursor: pointer;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.anime-art-container img:hover {
+    transform: scale(1.05);
 }
 
 .anime-title {
