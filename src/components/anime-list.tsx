@@ -1,33 +1,46 @@
 import { useAnimesContext } from "../contexts/useAnimesContext";
+import { useGetTopAnimes } from "../hooks/useGetTopAnimes";
 import { AnimeItem } from "./anime-item/anime-item";
 
 export function AnimeList() {
-  const { animes, isLoading, favoritesAnimes, showOnlyFavs } =
-    useAnimesContext();
+  const { favoritesAnimes, showOnlyFavs } = useAnimesContext();
+  const { topAnimes, isError, error, isLoading } = useGetTopAnimes();
 
   if (isLoading) {
-    return <h2>Loading..</h2>;
+    return <h1>Cargando..</h1>;
   }
 
-  if (!animes && !showOnlyFavs) {
-    return <h2>No se han encontrado animes</h2>;
+  if (isError) {
+    return <h1>{error}</h1>;
   }
 
-  if (showOnlyFavs && !favoritesAnimes) {
-    return <h2>No se han podido cargar animes</h2>;
+  if (!topAnimes) {
+    return <h1>No se han podido recuperar animes</h1>;
+  }
+
+  if (showOnlyFavs) {
+    return (
+      <div className="anime-list">
+        {favoritesAnimes.length > 0 ? (
+          favoritesAnimes?.map((anime) => (
+            <AnimeItem key={anime.mal_id} anime={anime} />
+          ))
+        ) : (
+          <h2>¡No has agregado ningún anime a favoritos todavía!</h2>
+        )}
+      </div>
+    );
   }
 
   return (
     <div className="anime-list">
-      {showOnlyFavs
-        ? favoritesAnimes.length > 0 &&
-          favoritesAnimes?.map((anime) => (
-            <AnimeItem key={anime.mal_id} anime={anime} />
-          ))
-        : animes.length > 0 &&
-          animes?.map((anime) => (
-            <AnimeItem key={anime.mal_id} anime={anime} />
-          ))}
+      {topAnimes.length > 0 ? (
+        topAnimes?.map((anime) => (
+          <AnimeItem key={anime.mal_id} anime={anime} />
+        ))
+      ) : (
+        <h1>No hay animes disponibles</h1>
+      )}
     </div>
   );
 }

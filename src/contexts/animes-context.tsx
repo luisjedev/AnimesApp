@@ -1,20 +1,15 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useState } from "react";
 import { Anime } from "../interfaces/anime";
-import { getTopAnimes } from "../api/get-top-animes";
 
 interface AnimesContextProps {
-  animes: Anime[] | undefined;
-  favoritesAnimes: Anime[] | undefined;
-  isLoading: boolean;
+  favoritesAnimes: Anime[];
   changeFavorites: ((anime: Anime) => void) | null;
   showOnlyFavs: boolean;
   changeShowedAnimes: ((isFavsVisible: boolean) => void) | null;
 }
 
 export const AnimesContext = createContext<AnimesContextProps>({
-  animes: [],
   favoritesAnimes: [],
-  isLoading: true,
   changeFavorites: null,
   showOnlyFavs: false,
   changeShowedAnimes: null,
@@ -25,28 +20,8 @@ export function AnimesContextProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const [animes, setAnimes] = useState<Anime[] | undefined>([]);
   const [favoritesAnimes, setFavoritesAnimes] = useState<Anime[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
   const [showOnlyFavs, setShowOnlyFavs] = useState(false);
-
-  useEffect(() => {
-    //obtener la lista de animes inicial
-    getInitialAnimes();
-  }, []);
-
-  async function getInitialAnimes() {
-    try {
-      const topAnimes = await getTopAnimes();
-      setAnimes(topAnimes);
-    } catch (error: unknown) {
-      if (error instanceof Error) {
-        console.log(error.message);
-      }
-    } finally {
-      setIsLoading(false);
-    }
-  }
 
   function onFavoritesChanged(anime: Anime): void {
     let animeAlreadyExist = false;
@@ -71,9 +46,7 @@ export function AnimesContextProvider({
   return (
     <AnimesContext.Provider
       value={{
-        animes,
         favoritesAnimes,
-        isLoading,
         changeFavorites: onFavoritesChanged,
         showOnlyFavs,
         changeShowedAnimes: onChangeVisibility,
