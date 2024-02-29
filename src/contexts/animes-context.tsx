@@ -3,16 +3,16 @@ import { Anime } from "../interfaces/anime";
 
 interface AnimesContextProps {
   favoritesAnimes: Anime[];
-  changeFavorites: ((anime: Anime) => void) | null;
+  changeFavorites: (anime: Anime) => void;
   showOnlyFavs: boolean;
-  changeShowedAnimes: ((isFavsVisible: boolean) => void) | null;
+  changeShowedAnimes: (isFavsVisible: boolean) => void;
 }
 
 export const AnimesContext = createContext<AnimesContextProps>({
   favoritesAnimes: [],
-  changeFavorites: null,
+  changeFavorites: () => null,
   showOnlyFavs: false,
-  changeShowedAnimes: null,
+  changeShowedAnimes: () => null,
 });
 
 export function AnimesContextProvider({
