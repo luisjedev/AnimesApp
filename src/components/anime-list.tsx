@@ -1,11 +1,11 @@
-import { useAnimesContext } from "../contexts/useAnimesContext";
+import { useFavAnimesContext } from "../hooks/useFavAnimesContext";
 import { useGetTopAnimes } from "../hooks/useGetTopAnimes";
 import { AnimeItem } from "./anime-item/anime-item";
 import { Loading } from "./loading";
 import { Pagination } from "./pagination";
 
 export function AnimeList() {
-  const { favoritesAnimes, showOnlyFavs } = useAnimesContext();
+  const { favoritesAnimes, showOnlyFavs } = useFavAnimesContext();
   const {
     topAnimes,
     isError,
@@ -37,12 +37,15 @@ export function AnimeList() {
 
   return (
     <section className="anime-list-container">
-      <Pagination
-        currentPage={currentPage!}
-        existNextPage={existNextPage ?? false}
-        isLoading={isLoading}
-        setCurrentPage={setCurrentPage}
-      />
+      {!showOnlyFavs && (
+        <Pagination
+          currentPage={currentPage!}
+          existNextPage={existNextPage ?? false}
+          isLoading={isLoading}
+          setCurrentPage={setCurrentPage}
+        />
+      )}
+
       {isLoading ? (
         <Loading />
       ) : (

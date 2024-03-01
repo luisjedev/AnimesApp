@@ -3,7 +3,7 @@ import FavImg from "../../assets/fav-icon.png";
 import FillFavImg from "../../assets/fill-fav-icon.png";
 import { useState } from "react";
 import { Anime } from "../../interfaces/anime";
-import { useAnimesContext } from "../../contexts/useAnimesContext";
+import { useFavAnimesContext } from "../../hooks/useFavAnimesContext";
 
 type AnimeItemProps = {
   anime: Anime;
@@ -12,7 +12,7 @@ type AnimeItemProps = {
 export function AnimeItem({ anime }: AnimeItemProps) {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const { changeFavorites } = useAnimesContext();
+  const { changeFavorites } = useFavAnimesContext();
 
   function onChangeIsFavorite() {
     setIsFavorite((prev) => !prev);

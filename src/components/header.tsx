@@ -2,11 +2,11 @@ import { AnimeFilter } from "../components/anime-filter";
 import FavImg from "../assets/fav-icon.png";
 import FillFavImg from "../assets/fill-fav-icon.png";
 import Logo from "../assets/logo.png";
-import { useAnimesContext } from "../contexts/useAnimesContext";
 import { useNavigate } from "react-router-dom";
+import { useFavAnimesContext } from "../hooks/useFavAnimesContext";
 
 export function Header() {
-  const { changeShowedAnimes, showOnlyFavs } = useAnimesContext();
+  const { changeShowedAnimes, showOnlyFavs } = useFavAnimesContext();
   const navigate = useNavigate();
 
   function resetPage() {

@@ -53,14 +53,14 @@ export function Pagination({
         <button
           className={`anime-list-pagination-button ${isLoading && "button-disable"}`}
           onClick={() => onChangePage("PREV")}
-        >{`< Anterior`}</button>
+        >{`< PREV PAGE`}</button>
       )}
       <h1> Top Animes</h1>
       {existNextPage && (
         <button
           className={`anime-list-pagination-button ${isLoading && "button-disable"}`}
           onClick={() => onChangePage("NEXT")}
-        >{`Siguiente >`}</button>
+        >{`NEXT PAGE >`}</button>
       )}
     </header>
   );

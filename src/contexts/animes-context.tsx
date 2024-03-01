@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useContext, useState } from "react";
 import { Anime } from "../interfaces/anime";
 
 interface AnimesContextProps {
