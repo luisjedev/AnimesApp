@@ -41,61 +41,61 @@ export type Anime = {
   streaming?: External[];
 };
 
-export type Aired = {
+type Aired = {
   from: Date;
   to: Date;
   prop: Prop;
   string: string;
 };
 
-export type Prop = {
+type Prop = {
   from: From;
   to: From;
 };
 
-export type From = {
+type From = {
   day: number;
   month: number;
   year: number;
 };
 
-export type Broadcast = {
+type Broadcast = {
   day: string;
   time: string;
   timezone: string;
   string: string;
 };
 
-export type Demographic = {
+type Demographic = {
   mal_id: number;
   type: Type;
   name: string;
   url: string;
 };
 
-export enum Type {
+enum Type {
   Anime = "anime",
 }
 
-export type Image = {
+type Image = {
   image_url: string;
   small_image_url: string;
   large_image_url: string;
 };
 
-export type Title = {
+type Title = {
   type: string;
   title: string;
 };
 
-export type Trailer = {
+type Trailer = {
   youtube_id: string;
   url: string;
   embed_url: string;
   images: Images;
 };
 
-export type Images = {
+type Images = {
   image_url: string;
   small_image_url: string;
   medium_image_url: string;
@@ -103,17 +103,17 @@ export type Images = {
   maximum_image_url: string;
 };
 
-export type Relation = {
+type Relation = {
   relation: string;
   entry: Genre[];
 };
 
-export type Theme = {
+type Theme = {
   openings: string[];
   endings: string[];
 };
 
-export type Genre = {
+type Genre = {
   mal_id: number;
   type: Type;
   name: string;

@@ -1,46 +1,65 @@
 import { useAnimesContext } from "../contexts/useAnimesContext";
 import { useGetTopAnimes } from "../hooks/useGetTopAnimes";
 import { AnimeItem } from "./anime-item/anime-item";
+import { Loading } from "./loading";
+import { Pagination } from "./pagination";
 
 export function AnimeList() {
   const { favoritesAnimes, showOnlyFavs } = useAnimesContext();
-  const { topAnimes, isError, error, isLoading } = useGetTopAnimes();
-
-  if (isLoading) {
-    return <h1>Cargando..</h1>;
-  }
+  const {
+    topAnimes,
+    isError,
+    error,
+    isLoading,
+    currentPage,
+    existNextPage,
+    setCurrentPage,
+  } = useGetTopAnimes();
 
   if (isError) {
     return <h1>{error}</h1>;
   }
 
-  if (!topAnimes) {
-    return <h1>No se han podido recuperar animes</h1>;
+  if (showOnlyFavs && !favoritesAnimes) {
+    return <h1>Error al mostrar favoritos!</h1>;
   }
 
-  if (showOnlyFavs) {
-    return (
-      <div className="anime-list">
-        {favoritesAnimes.length > 0 ? (
-          favoritesAnimes?.map((anime) => (
-            <AnimeItem key={anime.mal_id} anime={anime} />
-          ))
-        ) : (
-          <h2>¡No has agregado ningún anime a favoritos todavía!</h2>
-        )}
-      </div>
-    );
+  if (!showOnlyFavs && !topAnimes) {
+    return <h1>Error al obtener los animes!</h1>;
+  }
+
+  const animeListRendered = showOnlyFavs ? favoritesAnimes : topAnimes;
+
+  //esto nunca se da, pero me salta el linter
+  if (!animeListRendered) {
+    return <h1>Error</h1>;
   }
 
   return (
-    <div className="anime-list">
-      {topAnimes.length > 0 ? (
-        topAnimes?.map((anime) => (
-          <AnimeItem key={anime.mal_id} anime={anime} />
-        ))
+    <section className="anime-list-container">
+      <Pagination
+        currentPage={currentPage!}
+        existNextPage={existNextPage ?? false}
+        isLoading={isLoading}
+        setCurrentPage={setCurrentPage}
+      />
+      {isLoading ? (
+        <Loading />
       ) : (
-        <h1>No hay animes disponibles</h1>
+        <div className="anime-list">
+          {animeListRendered.length > 0 ? (
+            animeListRendered?.map((anime) => (
+              <AnimeItem key={anime.mal_id} anime={anime} />
+            ))
+          ) : (
+            <h1>
+              {showOnlyFavs
+                ? "No tienes animes favoritos!"
+                : "No existen animes"}
+            </h1>
+          )}
+        </div>
       )}
-    </div>
+    </section>
   );
 }
