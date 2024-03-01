@@ -8,7 +8,6 @@ export async function getTopAnimes(page: number = 1) {
       throw new Error("Error en la llamada");
     }
     const data = await res.json();
-    console.log(data);
     return data as AnimeApiResponse;
   } catch (e) {
     console.log(e);
