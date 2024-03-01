@@ -1,11 +1,11 @@
-import { AnimesContextProvider } from "./contexts/animes-context";
+import { FavAnimesContextProvider } from "./contexts/fav-animes-context";
 import { AppRoutes } from "./routes";
 
 function App() {
   return (
-    <AnimesContextProvider>
+    <FavAnimesContextProvider>
       <AppRoutes />
-    </AnimesContextProvider>
+    </FavAnimesContextProvider>
   );
 }
 

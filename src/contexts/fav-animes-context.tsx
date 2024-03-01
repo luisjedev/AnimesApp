@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 import { Anime } from "../interfaces/anime";
 
 interface AnimesContextProps {
@@ -8,14 +8,14 @@ interface AnimesContextProps {
   changeShowedAnimes: (isFavsVisible: boolean) => void;
 }
 
-export const AnimesContext = createContext<AnimesContextProps>({
+export const FavAnimesContext = createContext<AnimesContextProps>({
   favoritesAnimes: [],
   changeFavorites: () => null,
   showOnlyFavs: false,
   changeShowedAnimes: () => null,
 });
 
-export function AnimesContextProvider({
+export function FavAnimesContextProvider({
   children,
 }: {
   children: React.ReactNode;
@@ -44,7 +44,7 @@ export function AnimesContextProvider({
   }
 
   return (
-    <AnimesContext.Provider
+    <FavAnimesContext.Provider
       value={{
         favoritesAnimes,
         changeFavorites: onFavoritesChanged,
@@ -53,6 +53,6 @@ export function AnimesContextProvider({
       }}
     >
       {children}
-    </AnimesContext.Provider>
+    </FavAnimesContext.Provider>
   );
 }

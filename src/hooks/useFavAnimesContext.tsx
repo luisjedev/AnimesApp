@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import { AnimesContext } from "../contexts/animes-context";
+import { FavAnimesContext } from "../contexts/fav-animes-context";
 
 export function useFavAnimesContext() {
-  return useContext(AnimesContext);
+  return useContext(FavAnimesContext);
 }
