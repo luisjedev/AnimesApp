@@ -18,7 +18,7 @@ export function Header() {
     <header className="header-container">
       <img
         src={Logo}
-        alt="bohanon logo"
+        alt="bohanon_logo"
         className="logo"
         onClick={() => resetPage()}
       />
