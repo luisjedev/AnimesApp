@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { isNewRequestAllowed } from "../utils/apiControl";
 
 type PaginationProps = {
   isLoading: boolean;
@@ -6,20 +7,6 @@ type PaginationProps = {
   existNextPage: boolean;
   setCurrentPage: (page: number) => void;
 };
-
-const CHANGE_PAGE_MIN_INTERVAL = 800;
-
-function isPosibleChangePage(
-  lastRequestTime: number,
-  isLoading: boolean,
-): boolean {
-  const currentTime = new Date().getTime();
-  if (currentTime - lastRequestTime >= CHANGE_PAGE_MIN_INTERVAL && !isLoading) {
-    return true;
-  } else {
-    return false;
-  }
-}
 
 export function Pagination({
   currentPage,
@@ -30,19 +17,21 @@ export function Pagination({
   const [lastRequestTime, setLastRequestTime] = useState(0);
 
   function onChangePage(where: string) {
-    if (where === "PREV") {
-      if (
-        currentPage &&
-        currentPage > 1 &&
-        isPosibleChangePage(lastRequestTime, isLoading)
-      ) {
-        setLastRequestTime(new Date().getTime());
-        setCurrentPage(currentPage - 1);
-      }
-    } else {
-      if (currentPage && isPosibleChangePage(lastRequestTime, isLoading)) {
-        setLastRequestTime(new Date().getTime());
-        setCurrentPage(currentPage + 1);
+    if (!isLoading) {
+      if (where === "PREV") {
+        if (
+          currentPage &&
+          currentPage > 1 &&
+          isNewRequestAllowed(lastRequestTime)
+        ) {
+          setLastRequestTime(new Date().getTime());
+          setCurrentPage(currentPage - 1);
+        }
+      } else {
+        if (currentPage && isNewRequestAllowed(lastRequestTime)) {
+          setLastRequestTime(new Date().getTime());
+          setCurrentPage(currentPage + 1);
+        }
       }
     }
   }

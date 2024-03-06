@@ -25,7 +25,7 @@ export function useGetTopAnimes() {
       if (error instanceof Error) {
         setError(error.message);
       }
-      setError("An error occurred while fetching posts");
+      setError("Error al obtener los animes");
       setIsError(true);
     } finally {
       setIsLoading(false);
