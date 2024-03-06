@@ -4,15 +4,11 @@ import { Anime } from "../interfaces/anime";
 interface AnimesContextProps {
   favoritesAnimes: Anime[];
   changeFavorites: (anime: Anime) => void;
-  showOnlyFavs: boolean;
-  changeShowedAnimes: (isFavsVisible: boolean) => void;
 }
 
 export const FavAnimesContext = createContext<AnimesContextProps>({
   favoritesAnimes: [],
   changeFavorites: () => null,
-  showOnlyFavs: false,
-  changeShowedAnimes: () => null,
 });
 
 export function FavAnimesContextProvider({
@@ -21,7 +17,6 @@ export function FavAnimesContextProvider({
   children: React.ReactNode;
 }) {
   const [favoritesAnimes, setFavoritesAnimes] = useState<Anime[]>([]);
-  const [showOnlyFavs, setShowOnlyFavs] = useState(false);
 
   function onFavoritesChanged(anime: Anime): void {
     let animeAlreadyExist = false;
@@ -39,17 +34,11 @@ export function FavAnimesContextProvider({
     }
   }
 
-  function onChangeVisibility(onlyFavs: boolean): void {
-    setShowOnlyFavs(onlyFavs);
-  }
-
   return (
     <FavAnimesContext.Provider
       value={{
         favoritesAnimes,
         changeFavorites: onFavoritesChanged,
-        showOnlyFavs,
-        changeShowedAnimes: onChangeVisibility,
       }}
     >
       {children}

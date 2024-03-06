@@ -1,3 +1,16 @@
+import { AnimeList } from "../components/anime-list";
+import { useFavAnimesContext } from "../hooks/useFavAnimesContext";
+
 export function Favorites() {
-  return <h1>Favoritos</h1>;
+  const { favoritesAnimes } = useFavAnimesContext();
+
+  return (
+    <main className="anime-list-container">
+      {favoritesAnimes && favoritesAnimes.length > 0 ? (
+        <AnimeList animes={favoritesAnimes} />
+      ) : (
+        <h3>Todavía no tienes Animes favoritos</h3>
+      )}
+    </main>
+  );
 }

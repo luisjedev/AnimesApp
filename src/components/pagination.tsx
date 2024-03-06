@@ -40,14 +40,14 @@ export function Pagination({
     <header className="anime-list-pagination-container">
       {currentPage !== 1 && (
         <button
-          className={`anime-list-pagination-button ${isLoading && "button-disable"}`}
+          className="anime-list-pagination-button"
           onClick={() => onChangePage("PREV")}
         >{`< PREV PAGE`}</button>
       )}
       <h1> Top Animes</h1>
       {existNextPage && (
         <button
-          className={`anime-list-pagination-button ${isLoading && "button-disable"}`}
+          className="anime-list-pagination-button"
           onClick={() => onChangePage("NEXT")}
         >{`NEXT PAGE >`}</button>
       )}

@@ -64,7 +64,7 @@ body {
     padding-top: 20px;
     position: fixed;
     top: 0;
-    width: 88%;
+    width: 87%;
 
     max-width: 1300px;
     z-index: 10;
@@ -153,6 +153,12 @@ body {
     border-radius: 20px;
     background-color: white;
     cursor: pointer;
+    min-width: 105px;
+}
+
+.anime-list-pagination-button:hover {
+    background-color: orange;
+    color: white;
 }
 
 .button-disable {
