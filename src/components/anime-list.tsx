@@ -1,68 +1,20 @@
-import { useFavAnimesContext } from "../hooks/useFavAnimesContext";
-import { useGetTopAnimes } from "../hooks/useGetTopAnimes";
+import { Anime } from "../interfaces/anime";
 import { AnimeItem } from "./anime-item/anime-item";
-import { Loading } from "./loading";
-import { Pagination } from "./pagination";
 
-export function AnimeList() {
-  const { favoritesAnimes, showOnlyFavs } = useFavAnimesContext();
-  const {
-    topAnimes,
-    isError,
-    error,
-    isLoading,
-    currentPage,
-    existNextPage,
-    setCurrentPage,
-  } = useGetTopAnimes();
+type AnimeListProps = {
+  animes: Anime[];
+};
 
-  if (isError) {
-    return <h1>{error}</h1>;
-  }
-
-  if (showOnlyFavs && !favoritesAnimes) {
-    return <h1>Error al mostrar favoritos!</h1>;
-  }
-
-  if (!showOnlyFavs && !topAnimes) {
-    return <h1>Error al obtener los animes!</h1>;
-  }
-
-  const animeListRendered = showOnlyFavs ? favoritesAnimes : topAnimes;
-
-  //esto nunca se da, pero me salta el linter
-  if (!animeListRendered) {
-    return <h1>Error</h1>;
-  }
-
+export function AnimeList({ animes }: AnimeListProps) {
   return (
     <section className="anime-list-container">
-      {!showOnlyFavs && (
-        <Pagination
-          currentPage={currentPage!}
-          existNextPage={existNextPage ?? false}
-          isLoading={isLoading}
-          setCurrentPage={setCurrentPage}
-        />
-      )}
-
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <div className="anime-list">
-          {animeListRendered.length > 0 ? (
-            animeListRendered?.map((anime) => (
-              <AnimeItem key={anime.mal_id} anime={anime} />
-            ))
-          ) : (
-            <h1>
-              {showOnlyFavs
-                ? "No tienes animes favoritos!"
-                : "No existen animes"}
-            </h1>
-          )}
-        </div>
-      )}
+      <div className="anime-list">
+        {animes.length > 0 ? (
+          animes?.map((anime) => <AnimeItem key={anime.mal_id} anime={anime} />)
+        ) : (
+          <h2>No existen animes</h2>
+        )}
+      </div>
     </section>
   );
 }

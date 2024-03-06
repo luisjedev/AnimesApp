@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Anime } from "../interfaces/anime";
 import { getAnimeByName } from "../api/get-anime-by-name";
 

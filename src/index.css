@@ -70,6 +70,12 @@ body {
     z-index: 10;
 }
 
+.header-container > div {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
 .logo {
     height: 40px;
     cursor: pointer;
