@@ -5,9 +5,7 @@ import { API_URL } from "./constants";
 
 export async function getAnimeByName(name: string = "one%piece") {
   try {
-    const res = await fetch(
-      `${API_URL}/anime?q=${name}&order_by=score&sort=desc`,
-    );
+    const res = await fetch(`${API_URL}/anime?q=${name}&sfw=true`);
     if (!res.ok) {
       throw new Error("Error en la llamada");
     }

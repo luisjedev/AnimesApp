@@ -2,7 +2,7 @@ import { AnimeApiResponse } from "../interfaces";
 import { API_URL } from "./constants";
 export async function getTopAnimes(page: number = 1) {
   try {
-    const res = await fetch(`${API_URL}/top/anime?page=${page}`);
+    const res = await fetch(`${API_URL}/top/anime?page=${page}&sfw=true`);
     if (!res.ok) {
       throw new Error("Error en la llamada");
     }

@@ -5,7 +5,7 @@ import { useGetTopAnimes } from "../hooks/useGetTopAnimes";
 
 export function Home() {
   const {
-    topAnimes,
+    animes,
     currentPage,
     error,
     existNextPage,
@@ -18,7 +18,7 @@ export function Home() {
     return <p>{error}</p>;
   }
 
-  if (topAnimes)
+  if (animes)
     return (
       <main className="anime-list-container">
         <Pagination
@@ -29,8 +29,8 @@ export function Home() {
         />
         {isLoading ? (
           <Loading />
-        ) : topAnimes && topAnimes.length > 0 ? (
-          <AnimeList animes={topAnimes} />
+        ) : animes && animes.length > 0 ? (
+          <AnimeList animes={animes} />
         ) : (
           <h2>No hay animes existentes</h2>
         )}
