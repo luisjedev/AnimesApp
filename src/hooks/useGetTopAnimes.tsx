@@ -4,6 +4,8 @@ import { getTopAnimes } from "../api/get-top-animes";
 import { getAnimeByName } from "../api/get-anime-by-name";
 import { useSearchParams } from "react-router-dom";
 
+//preguntar cual es la mejor manera de organizar llamadas diferentes en un mismo hook
+
 export function useGetTopAnimes() {
   const [animes, setAnimes] = useState<Anime[] | undefined>([]);
   const [currentPage, setCurrentPage] = useState<number | undefined>(1);
