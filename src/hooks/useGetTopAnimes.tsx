@@ -46,7 +46,10 @@ export function useGetTopAnimes() {
   async function getFilteredAnimes(name: string) {
     setIsLoading(true);
     try {
-      const response = await getAnimeByName(name.replace("+", "%"));
+      const response = await getAnimeByName(
+        name.replace("+", "%"),
+        currentPage
+      );
       console.log(response?.data);
       setAnimes(response?.data);
       setCurrentPage(response?.pagination.current_page);

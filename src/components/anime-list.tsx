@@ -5,11 +5,11 @@ type AnimeListProps = {
   animes: Anime[];
 };
 
-export function AnimeList({ animes }: AnimeListProps) {
+export function AnimeList({ animes }: Readonly<AnimeListProps>) {
   return (
     <section className="anime-list-container">
       <div className="anime-list">
-        {animes.length > 0 ? (
+        {animes && animes.length > 0 ? (
           animes?.map((anime) => <AnimeItem key={anime.mal_id} anime={anime} />)
         ) : (
           <h2>No existen animes</h2>

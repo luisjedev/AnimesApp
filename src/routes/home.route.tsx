@@ -21,19 +21,14 @@ export function Home() {
   if (animes)
     return (
       <main className="anime-list-container">
+        <h1 className="section-title">Top animes</h1>
         <Pagination
           currentPage={currentPage ?? 1}
           existNextPage={existNextPage ?? false}
           isLoading={isLoading}
           setCurrentPage={setCurrentPage}
         />
-        {isLoading ? (
-          <Loading />
-        ) : animes && animes.length > 0 ? (
-          <AnimeList animes={animes} />
-        ) : (
-          <h2>No hay animes existentes</h2>
-        )}
+        {isLoading ? <Loading /> : <AnimeList animes={animes} />}
       </main>
     );
 }

@@ -75,6 +75,30 @@ body {
     gap: 50px;
 }
 
+.header-navbar ul{
+    padding-top: 5px;
+}
+
+.header-navbar button{
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: solid white 1px;
+    background-color: black;
+    color: white;
+    cursor: pointer;
+    text-decoration: none;
+    list-style: none;
+}
+
+.header-navbar button.active{
+    background-color: rgba(255, 255, 255, 0.306);
+    border-color: rgba(255, 255, 255, 0.306);
+}
+
+.section-title{
+ margin: 0px 0px 30px 20px;
+}
+
 .logo {
     height: 40px;
     cursor: pointer;

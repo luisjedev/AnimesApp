@@ -13,9 +13,9 @@ export const FavAnimesContext = createContext<AnimesContextProps>({
 
 export function FavAnimesContextProvider({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   const [favoritesAnimes, setFavoritesAnimes] = useState<Anime[]>([]);
 
   function onFavoritesChanged(anime: Anime): void {
@@ -28,7 +28,7 @@ export function FavAnimesContextProvider({
       setFavoritesAnimes((favorites) => [...favorites, anime]);
     } else {
       const newFavList = favoritesAnimes.filter(
-        (favAnime) => anime.mal_id !== favAnime.mal_id,
+        (favAnime) => anime.mal_id !== favAnime.mal_id
       );
       setFavoritesAnimes(newFavList);
     }

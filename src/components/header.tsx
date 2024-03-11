@@ -1,9 +1,11 @@
 import { AnimeFilter } from "../components/anime-filter";
 import Logo from "../assets/logo.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
+  console.log(location);
 
   return (
     <header className="header-container">
@@ -16,14 +18,21 @@ export function Header() {
         />
         <nav className="header-navbar">
           <ul>
-            <li onClick={() => navigate("/favorites")}>Favoritos</li>
+            <button
+              className={`${location.pathname == "/favorites" && "active"}`}
+              onClick={() => navigate("/favorites")}
+            >
+              Favorites
+            </button>
           </ul>
         </nav>
       </div>
 
-      <div className="filters-container">
-        <AnimeFilter />
-      </div>
+      {location.pathname == "/" && (
+        <div className="filters-container">
+          <AnimeFilter />
+        </div>
+      )}
     </header>
   );
 }

@@ -13,7 +13,7 @@ export function Pagination({
   existNextPage,
   isLoading,
   setCurrentPage,
-}: PaginationProps) {
+}: Readonly<PaginationProps>) {
   const [lastRequestTime, setLastRequestTime] = useState(0);
 
   function onChangePage(where: string) {
@@ -27,11 +27,9 @@ export function Pagination({
           setLastRequestTime(new Date().getTime());
           setCurrentPage(currentPage - 1);
         }
-      } else {
-        if (currentPage && isNewRequestAllowed(lastRequestTime)) {
-          setLastRequestTime(new Date().getTime());
-          setCurrentPage(currentPage + 1);
-        }
+      } else if (currentPage && isNewRequestAllowed(lastRequestTime)) {
+        setLastRequestTime(new Date().getTime());
+        setCurrentPage(currentPage + 1);
       }
     }
   }
@@ -44,7 +42,6 @@ export function Pagination({
           onClick={() => onChangePage("PREV")}
         >{`< PREV PAGE`}</button>
       )}
-      <h1> Top Animes</h1>
       {existNextPage && (
         <button
           className="anime-list-pagination-button"

@@ -3,9 +3,9 @@
 import { AnimeApiResponse } from "../interfaces";
 import { API_URL } from "./constants";
 
-export async function getAnimeByName(name: string = "one%piece") {
+export async function getAnimeByName(name: string = "", page: number = 1) {
   try {
-    const res = await fetch(`${API_URL}/anime?q=${name}&sfw=true`);
+    const res = await fetch(`${API_URL}/anime?q=${name}&sfw=true&page=${page}`);
     if (!res.ok) {
       throw new Error("Error en la llamada");
     }

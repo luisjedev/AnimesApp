@@ -6,6 +6,7 @@ export function Favorites() {
 
   return (
     <main className="anime-list-container">
+      <h1 className="section-title">Favorites animes</h1>
       {favoritesAnimes && favoritesAnimes.length > 0 ? (
         <AnimeList animes={favoritesAnimes} />
       ) : (

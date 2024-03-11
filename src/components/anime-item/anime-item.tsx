@@ -1,7 +1,7 @@
 import "./anime-item.css";
 import FavImg from "../../assets/fav-icon.png";
 import FillFavImg from "../../assets/fill-fav-icon.png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Anime } from "../../interfaces/anime";
 import { useFavAnimesContext } from "../../hooks/useFavAnimesContext";
 
@@ -9,10 +9,20 @@ type AnimeItemProps = {
   anime: Anime;
 };
 
-export function AnimeItem({ anime }: AnimeItemProps) {
+export function AnimeItem({ anime }: Readonly<AnimeItemProps>) {
   const [isFavorite, setIsFavorite] = useState(false);
 
-  const { changeFavorites } = useFavAnimesContext();
+  const { changeFavorites, favoritesAnimes } = useFavAnimesContext();
+
+  useEffect(() => {
+    if (anime && favoritesAnimes.length > 0) {
+      favoritesAnimes.some((animeItem) => {
+        if (animeItem.mal_id == anime.mal_id) {
+          setIsFavorite(true);
+        }
+      });
+    }
+  }, []);
 
   function onChangeIsFavorite() {
     setIsFavorite((prev) => !prev);
@@ -26,14 +36,12 @@ export function AnimeItem({ anime }: AnimeItemProps) {
   return (
     <article className="anime-card-container">
       <div className="anime-art-container">
-        <img src={anime.images.webp.large_image_url} alt={anime.title} />
+        <img src={anime.images.webp.image_url} alt={anime.title} />
       </div>
       <footer className="anime-card-footer">
         <div className="anime-card-details">
           <h2 className="anime-title">{anime.title}</h2>
-          <p className="anime-categories">
-            {anime.genres[0]?.name}, {anime.genres[1]?.name}
-          </p>
+          <p className="anime-categories">{anime.genres[0]?.name}</p>
         </div>
         <img
           className="favorite-img"
