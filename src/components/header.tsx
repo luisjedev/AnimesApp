@@ -5,7 +5,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 export function Header() {
   const navigate = useNavigate();
   const location = useLocation();
-  console.log(location);
 
   return (
     <header className="header-container">

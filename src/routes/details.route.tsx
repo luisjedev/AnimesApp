@@ -4,9 +4,7 @@ import { Loading } from "../components/loading";
 
 export function Details() {
   const { animeId } = useParams<{ animeId: string }>();
-  console.log(animeId);
   const { anime, error, isError, isLoading } = useGetAnime(animeId!);
-  console.log(anime);
   if (isLoading) {
     return <Loading />;
   }
