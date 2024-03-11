@@ -10,12 +10,9 @@ export function Header() {
   return (
     <header className="header-container">
       <div>
-        <img
-          src={Logo}
-          alt="bohanon_logo"
-          className="logo"
-          onClick={() => navigate("/")}
-        />
+        <button className="button-impostor" onClick={() => navigate("/")}>
+          <img src={Logo} alt="bohanon_logo" className="logo" />
+        </button>
         <nav className="header-navbar">
           <ul>
             <button

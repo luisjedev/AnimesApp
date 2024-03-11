@@ -1,7 +1,7 @@
 import { AnimeList } from "../components/anime-list";
 import { Loading } from "../components/loading";
 import { Pagination } from "../components/pagination";
-import { useGetTopAnimes } from "../hooks/useGetTopAnimes";
+import { useGetAnimes } from "../hooks/useGetAnimes";
 
 export function Home() {
   const {
@@ -12,7 +12,7 @@ export function Home() {
     isError,
     isLoading,
     setCurrentPage,
-  } = useGetTopAnimes();
+  } = useGetAnimes();
 
   if (isError) {
     return <p>{error}</p>;
@@ -21,7 +21,6 @@ export function Home() {
   if (animes)
     return (
       <main className="anime-list-container">
-        <h1 className="section-title">Top animes</h1>
         <Pagination
           currentPage={currentPage ?? 1}
           existNextPage={existNextPage ?? false}

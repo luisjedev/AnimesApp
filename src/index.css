@@ -23,6 +23,11 @@ body {
     text-align: center;
 }
 
+.button-impostor{
+    background-color: black;
+    border: none;
+}
+
 .main-container {
     width: 100%;
     max-width: 1300px;
@@ -93,10 +98,6 @@ body {
 .header-navbar button.active{
     background-color: rgba(255, 255, 255, 0.306);
     border-color: rgba(255, 255, 255, 0.306);
-}
-
-.section-title{
- margin: 0px 0px 30px 20px;
 }
 
 .logo {
@@ -175,7 +176,6 @@ body {
     border: none;
     border-radius: 20px;
     background-color: white;
-    cursor: pointer;
     min-width: 105px;
 }
 

@@ -4,6 +4,7 @@ import FillFavImg from "../../assets/fill-fav-icon.png";
 import { useEffect, useState } from "react";
 import { Anime } from "../../interfaces/anime";
 import { useFavAnimesContext } from "../../hooks/useFavAnimesContext";
+import { useNavigate } from "react-router-dom";
 
 type AnimeItemProps = {
   anime: Anime;
@@ -11,7 +12,7 @@ type AnimeItemProps = {
 
 export function AnimeItem({ anime }: Readonly<AnimeItemProps>) {
   const [isFavorite, setIsFavorite] = useState(false);
-
+  const navigate = useNavigate();
   const { changeFavorites, favoritesAnimes } = useFavAnimesContext();
 
   useEffect(() => {
@@ -35,20 +36,27 @@ export function AnimeItem({ anime }: Readonly<AnimeItemProps>) {
 
   return (
     <article className="anime-card-container">
-      <div className="anime-art-container">
+      <button
+        className="anime-art-container button-impostor"
+        onClick={() => navigate(`/details/${anime.mal_id}`)}
+      >
         <img src={anime.images.webp.image_url} alt={anime.title} />
-      </div>
+      </button>
       <footer className="anime-card-footer">
         <div className="anime-card-details">
           <h2 className="anime-title">{anime.title}</h2>
           <p className="anime-categories">{anime.genres[0]?.name}</p>
         </div>
-        <img
-          className="favorite-img"
-          src={isFavorite ? FillFavImg : FavImg}
-          alt="favorites icon"
+        <button
+          className="button-impostor"
           onClick={() => onChangeIsFavorite()}
-        />
+        >
+          <img
+            className="favorite-img"
+            src={isFavorite ? FillFavImg : FavImg}
+            alt="favorites icon"
+          />
+        </button>
       </footer>
     </article>
   );

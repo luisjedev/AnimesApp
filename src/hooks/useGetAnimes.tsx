@@ -6,7 +6,7 @@ import { useSearchParams } from "react-router-dom";
 
 //preguntar cual es la mejor manera de organizar llamadas diferentes en un mismo hook
 
-export function useGetTopAnimes() {
+export function useGetAnimes() {
   const [animes, setAnimes] = useState<Anime[] | undefined>([]);
   const [currentPage, setCurrentPage] = useState<number | undefined>(1);
   const [existNextPage, setExistNextPage] = useState<boolean>();
