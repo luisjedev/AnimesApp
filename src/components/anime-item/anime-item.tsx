@@ -44,7 +44,7 @@ export function AnimeItem({ anime }: Readonly<AnimeItemProps>) {
       </button>
       <footer className="anime-card-footer">
         <div className="anime-card-details">
-          <h2 className="anime-title">{anime.title}</h2>
+          <h3 className="anime-title">{anime.title}</h3>
           <p className="anime-categories">{anime.genres[0]?.name}</p>
         </div>
         <button

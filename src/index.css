@@ -87,7 +87,7 @@ body {
 .header-navbar button{
     padding: 10px 20px;
     border-radius: 5px;
-    border: solid white 1px;
+    border: solid rgba(255, 255, 255, 0.446) 1px;
     background-color: black;
     color: white;
     cursor: pointer;
@@ -213,4 +213,108 @@ body {
     .anime-list {
         grid-template-columns: repeat(4, 1fr);
     }
+}
+
+/* Details route */
+
+.details-container{
+ width: 100%;
+ display: flex;
+ flex-direction: column;
+ justify-content: start;
+ align-items: center;
+}
+
+.details-header{
+    display: flex;
+    width: 87%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.anime-status{
+    border: solid orange 1px;
+    padding: 8px;
+    border-radius: 7px;
+    background-color: orange;
+}
+
+.anime-score-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid orange 1px;
+    padding: 8px;
+    border-radius: 7px;
+}
+
+.anime-score{
+
+}
+
+.anime-score-img{
+    margin-left: 7px;
+    padding-bottom: 5px;
+    width: 20px;
+}
+
+.media-section{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 400px;
+}
+
+.media-img-container{
+    width: 25%;
+    height: 100%;
+}
+
+.media-img{
+    width: 100%;
+    height: 100%;
+}
+
+.media-trailer-container{
+    width: 70%;
+    height: 100%;
+}
+
+.media-trailer{
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.details-main-container{
+    margin-top: 30px;
+    width: 100%;
+}
+
+.details-title{
+
+}
+
+.details-genres-list-container{
+    margin-top: 20px;
+    width: 100%;
+    display: flex;
+    gap: 30px;
+}
+
+.details-genre{
+    border: solid orange 1px;
+    border-radius: 8px;
+    background-color: black;
+    padding: 8px;
+}
+
+.details-main-description-container{
+    margin-top: 30px;
+    margin-left: 2px;
+}
+
+.main-description{
+    text-align:justify;
+    font-size: 16px;
 }
