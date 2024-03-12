@@ -21,9 +21,9 @@ export function Details() {
   return (
     <div className="details-container">
       <header className="details-header">
-        <h3 className="anime-status">{anime.status}</h3>
+        <h5 className="anime-status">{anime.status}</h5>
         <div className="anime-score-container">
-          <h3 className="anime-score">{anime.score}</h3>
+          <h5 className="anime-score">{anime.score}</h5>
           <img className="anime-score-img" src={fillFavIcon} alt="score img" />
         </div>
       </header>
